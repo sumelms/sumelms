@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sumelms-user
+  namespace: sumelms
+  labels:
+    app: sumelms-user
+    platform: sumelms
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sumelms-user
+      labels:
+        app: sumelms-user
+        platform: sumelms
+    spec:
+      containers:
+        - name: sumelms-user
+          image: sumelms/user:latest
+          imagePullPolicy: Always
+          env:
+            - name: SERVICE_CONFIG_FILE
+              value: /etc/config/config.json
+            - name: API_GATEWAY_URL
+              value: "http://kong-admin:8001"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: service-config
+              mountPath: /etc/config
+      volumes:
+        - name: service-config
+          configMap:
+            name: sumelms-configmap
+            items:
+              - key: user-config.json
+                path: config.json
+  selector:
+    matchLabels:
+      app: sumelms-user
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sumelms-profile
+  namespace: sumelms
+  labels:
+    app: sumelms-profile
+    platform: sumelms
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sumelms-profile
+      labels:
+        app: sumelms-profile
+        platform: sumelms
+    spec:
+      containers:
+        - name: sumelms-profile
+          image: sumelms/profile:latest
+          imagePullPolicy: Always
+          env:
+            - name: SERVICE_CONFIG_FILE
+              value: /etc/config/config.json
+            - name: API_GATEWAY_URL
+              value: "http://kong-admin:8001"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: service-config
+              mountPath: /etc/config
+      volumes:
+        - name: service-config
+          configMap:
+            name: sumelms-configmap
+            items:
+              - key: profile-config.json
+                path: config.json
+  selector:
+    matchLabels:
+      app: sumelms-profile

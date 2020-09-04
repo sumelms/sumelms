@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sumelms-configmap
+  namespace: sumelms
+  labels:
+    app: sumelms
+    platform: sumelms
+data:
+  user-config.json: |
+    {}
+  profile-config.json: |
+    {}
