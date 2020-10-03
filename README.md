@@ -25,47 +25,30 @@ Sumé LMS is a modern and open-source learning management system that uses moder
   * REST API based application
   * and more.
 
-## Repositories
-
-The Sumé LMS is divided in two parts.
-
-- [Sumé LMS API](https://github.com/sumelms/backend)
-- [Sumé LMS Web Application](https://github.com/sumelms/frontend)
-
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
-- [Install](#install)
-- [Configure](#configure)
-- [Support](#support)
+- [Setup](#setup)
+- [Building](#building)
+- [Testing](#testing)
 - [Contributing](#contributing)
+- [Team](#team)
+- [Support](#support)
 - [License](#license)
 
 ## Prerequisites
 
-### Frontend
+@TODO
 
-- [NodeJS >= v12.16.3](https://nodejs.org/en/download/releases/)
-
-### Backend
-
-- PHP >= 7.2.5
-  - BCMath PHP Extension
-  - Ctype PHP Extension
-  - Fileinfo PHP extension
-  - JSON PHP Extension
-  - Mbstring PHP Extension
-  - OpenSSL PHP Extension
-  - PDO PHP Extension
-  - Tokenizer PHP Extension
-  - XML PHP Extension
-- PostgreSQL 9.5+
-
-## Install
+## Setup
 
 @TODO
 
-## Configure
+## Building
+
+@TODO
+
+## Testing
 
 @TODO
 

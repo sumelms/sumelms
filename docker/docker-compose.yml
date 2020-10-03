@@ -1,0 +1,115 @@
+version: "3.3"
+services:
+
+# Infra and monitoring
+
+  krakend:
+    image: devopsfaith/krakend:latest
+    ports:
+      - 8080:8080
+    volumes:
+      - ./krakend:/etc/krakend
+
+  sumelms-postgres:
+    image: postgres:9.5-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - sumelms-postgres:/var/lib/postgresql/data
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+# Microservices
+
+  sumelms-account:
+    image: sumelms/microservice-account:latest
+    environment:
+      - DATABASE_HOST=sumelms-postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_DB=postgres
+    ports:
+      - 8000:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+    secrets:
+      - public.pub
+      - service.key
+      - service.cert
+      - system
+      - default
+      - system.pub
+      - default.pub
+      - account-config.json
+
+  sumelms-course:
+    image: sumelms/microservice-course:latest
+    environment:
+      - ENV=development
+      - DATABASE_HOST=sumelms-postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_DB=postgres
+    ports:
+      - 8001:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+    secrets:
+      - public.pub
+      - service.key
+      - service.cert
+      - system
+      - default
+      - system.pub
+      - default.pub
+
+  sumelms-auth:
+    image: sumelms/microservice-auth:latest
+    environment:
+      - ENV=development
+      - DATABASE_HOST=sumelms-postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_DB=postgres
+    ports:
+      - 8001:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+    secrets:
+      - public.pub
+      - service.key
+      - service.cert
+      - system
+      - default
+      - system.pub
+      - default.pub
+
+secrets:
+  public.pub:
+    file: ./keys/public.pub
+  service.key:
+    file: ./keys/service.key
+  service.cert:
+    file: ./keys/service.cert
+  system:
+    file: ./keys/system
+  default:
+    file: ./keys/default
+  system.pub:
+    file: ./keys/system.pub
+  default.pub:
+    file: ./keys/default.pub
+
+volumes:
+  sumelms-postgres:

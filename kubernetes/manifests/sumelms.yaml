@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sumelms-auth
+  namespace: sumelms
+  labels:
+    app: sumelms-auth
+    platform: sumelms
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sumelms-auth
+      labels:
+        app: sumelms-auth
+        platform: sumelms
+    spec:
+      containers:
+        - name: sumelms-auth
+          image: sumelms/microservice-auth:latest
+          imagePullPolicy: Always
+          env:
+            - name: API_GATEWAY_URL
+              value: "http://kong-admin:8001"
+          ports:
+            - containerPort: 8080
+  selector:
+    matchLabels:
+      app: sumelms-auth
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sumelms-account
+  namespace: sumelms
+  labels:
+    app: sumelms-account
+    platform: sumelms
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sumelms-account
+      labels:
+        app: sumelms-account
+        platform: sumelms
+    spec:
+      containers:
+        - name: sumelms-account
+          image: sumelms/microservice-account:latest
+          imagePullPolicy: Always
+          env:
+            - name: API_GATEWAY_URL
+              value: "http://kong-admin:8001"
+          ports:
+            - containerPort: 8080
+  selector:
+    matchLabels:
+      app: sumelms-account
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sumelms-course
+  namespace: sumelms
+  labels:
+    app: sumelms-course
+    platform: sumelms
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sumelms-course
+      labels:
+        app: sumelms-course
+        platform: sumelms
+    spec:
+      containers:
+        - name: sumelms-course
+          image: sumelms/microservice-course:latest
+          imagePullPolicy: Always
+          env:
+            - name: API_GATEWAY_URL
+              value: "http://kong-admin:8001"
+          ports:
+            - containerPort: 8080
+  selector:
+    matchLabels:
+      app: sumelms-course

@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "extra_config": {
+    "github_com/devopsfaith/krakend-gologging": {
+      "level":  "DEBUG",
+      "prefix": "[KRAKEND]",
+      "syslog": false,
+      "stdout": true
+    },
+    "github_com/devopsfaith/krakend-cors": {
+      "allow_origins": [
+        "http://localhost:8080",
+        "http://localhost:3000"
+      ],
+      "allow_methods": ["POST", "GET", "PUT", "DELETE"],
+      "allow_headers": ["Origin", "Authorization","Content-Type"],
+      "expose_headers": ["Content-Length"],
+      "max_age": "12h"
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint": "/users",
+      "backend": [
+        {
+          "url_pattern": "/users",
+          "host": "http://sumelms-user:8080"
+        }
+      ]
+    }
+  ]
+}
