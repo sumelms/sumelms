@@ -6,8 +6,3 @@ metadata:
   labels:
     app: sumelms
     platform: sumelms
-data:
-  user-config.json: |
-    {}
-  profile-config.json: |
-    {}

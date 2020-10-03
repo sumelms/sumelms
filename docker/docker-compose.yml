@@ -26,8 +26,8 @@ services:
 
 # Microservices
 
-  sumelms-user:
-    image: sumelms/user:latest
+  sumelms-account:
+    image: sumelms/microservice-account:latest
     environment:
       - DATABASE_HOST=sumelms-postgres
       - DATABASE_PORT=5432
@@ -47,10 +47,10 @@ services:
       - default
       - system.pub
       - default.pub
-      - user-config.json
+      - account-config.json
 
-  sumelms-profile:
-    image: sumelms/profile:latest
+  sumelms-course:
+    image: sumelms/microservice-course:latest
     environment:
       - ENV=development
       - DATABASE_HOST=sumelms-postgres
@@ -71,7 +71,29 @@ services:
       - default
       - system.pub
       - default.pub
-      - profile-config.json
+
+  sumelms-auth:
+    image: sumelms/microservice-auth:latest
+    environment:
+      - ENV=development
+      - DATABASE_HOST=sumelms-postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_DB=postgres
+    ports:
+      - 8001:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+    secrets:
+      - public.pub
+      - service.key
+      - service.cert
+      - system
+      - default
+      - system.pub
+      - default.pub
 
 secrets:
   public.pub:
@@ -88,10 +110,6 @@ secrets:
     file: ./keys/system.pub
   default.pub:
     file: ./keys/default.pub
-  user-config.json:
-    file: ./config/user-config.json
-  profile-config.json:
-    file: ./config/profile-config.json
 
 volumes:
   sumelms-postgres:
