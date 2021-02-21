@@ -6,11 +6,10 @@ labels: 'bug 🐛'
 assignees: ''
 ---
 
-### Description
+## Description
+<!-- A clear and concise description of what the bug is. -->
 
-A clear and concise description of what the bug is.
-
-### Steps to reproduce
+## Steps to reproduce
 
 Steps to reproduce the behavior:
 
@@ -19,24 +18,20 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See an error
 
-### Expected behavior
+## Expected behavior
+<!-- A clear and concise description of what you expected to happen. -->
 
-A clear and concise description of what you expected to happen.
+## Logs
+<!-- If you have it, any log that provides extra information could be added here. -->
 
-### Logs
+## Screenshots
+<!-- If applicable, add screenshots to help explain your problem. -->
 
-If you have it, any log that provides extra information could be added here.
-
-### Screenshots
-
-If applicable, add screenshots to help explain your problem.
-
-### System information
+## System information
 
 - OS: [e.g. iOS]
 - Golang: [e.g. 1.14.9]
 - Any other information that can be useful
 
-### Additional context
-
-Add any other context about the problem here.
+## Additional context
+<!-- Add any other context about the problem here. -->

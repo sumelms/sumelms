@@ -2,18 +2,23 @@
 name: Epic
 about: Create an epic task
 title: ''
-labels: 'epic'
+labels: 'epic 🎯'
 assignees: ''
 ---
 
-### Description
+## Description
+<!-- A clear and concise description of what the epic is about. -->
 
-A clear and concise description of what the epic is about.
 
-### Goals
+## Goals
+<!-- Describe the epic goals. -->
 
-Describe the epic goals.
+### User stories (Related issues)
+<!-- List the user stories/issues related to this epic -->
 
-### Additional context
+- As a ..., I want to ...
 
-Add any other context about the problem here.
+
+## Additional context
+<!-- Provide some extra context to the epic. -->
+

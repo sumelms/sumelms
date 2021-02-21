@@ -6,14 +6,13 @@ labels: 'new feature 🌟'
 assignees: ''
 ---
 
-### Description
+## Description
+<!-- Describe your feature request. -->
 
-Describe your feature request.
+## Aditional information
+<!-- Any other additional information. -->
 
-### Aditional information
+## Possible unknowns
+<!-- List of possible unknowns related. -->
 
-Any other additional information.
-
-### Possible unknowns
-
-List of possible unknowns related.
+- ...

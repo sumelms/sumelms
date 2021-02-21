@@ -6,22 +6,17 @@ labels: 'research 🔍'
 assignees: ''
 ---
 
-### Description
+## Description
+<!-- A clear and concise description of what the bug is. -->
 
-A clear and concise description of what the bug is.
+## Goals
+<!-- Describe the research goals. -->
 
-### Goals
+## Desired artfacts
+<!-- List the artifacts that the research should generate (report, demo, etc). -->
 
-Describe the research goals.
+## Possible next steps
+<!-- Describe the next steps to being taken after the research. -->
 
-### Desired artfacts
-
-List the artifacts that the research should generate (report, demo, etc).
-
-### Possible next steps
-
-Describe the next steps to being taken after the research.
-
-### Additional context
-
-Add any other context about the problem here.
+## Additional context
+<!-- Add any other context about the problem here. -->
